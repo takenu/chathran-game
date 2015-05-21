@@ -1,7 +1,7 @@
-path = "../data/lua/"
+path = "lua-no-path-defined"
 
 function loadscr(fname)
-	local f = assert(loadfile(path .. fname))
+	local f = assert(loadfile(path .. "lua/" .. fname))
 	f()
 end
 
@@ -35,6 +35,10 @@ function unload(id) -- set an object as not-yet-loaded
 end
 function finalize(id) -- set an object as loaded and ready for use
 	loadedObjects[id] = true
+end
+
+function setpath(nwpath)
+	path = nwpath
 end
 
 -- The startup of Lua as called from the main executable.
